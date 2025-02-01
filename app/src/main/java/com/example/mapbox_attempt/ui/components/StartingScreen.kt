@@ -54,20 +54,10 @@ fun StartingScreen(
 
 @Composable
 fun MenuItem(item: String, onItemClick: (String) -> Unit) {
-    Box(
-        modifier = Modifier
-            .background(Color.LightGray)
-            .width(100.dp)
-            .clickable{ onItemClick(item) },
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = item,
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier
-                .padding(16.dp)
-        )
-    }
+    GreetingCard(titleText = "This is a card for the " + item + " button.",
+        descriptionText = "Description text",
+        buttonText = item
+    )
 }
 
 @Preview(showBackground = true)
