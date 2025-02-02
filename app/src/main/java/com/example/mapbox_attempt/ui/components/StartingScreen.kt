@@ -1,15 +1,11 @@
 package com.example.mapbox_attempt.ui.components
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,35 +24,42 @@ fun StartingScreen(
     val menuItems = viewModel.uiState.value.menuItems
     val selectedItem = viewModel.getSelectedMenuItem()
 
-    Column(
+    LazyColumn(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
         // Display the list of menu items
-        menuItems.forEachIndexed {index, item ->
-            MenuItem(item = item, onItemClick = {
-                viewModel.selectMenuItem(it)
-            })
-            if (index != menuItems.lastIndex) {
-                Spacer(modifier = Modifier.height(10.dp))
+        item{
+            Column {
+                menuItems.forEachIndexed {index, item ->
+                    MenuItem(item = item, onItemClick = {
+                        viewModel.selectMenuItem(it)
+                    })
+                    if (index != menuItems.lastIndex) {
+                        Spacer(modifier = Modifier.height(10.dp))
+                    }
+                }
+                Spacer(modifier = Modifier.height(20.dp))
+
+                // Display the selected menu item
+                if (selectedItem.isNotEmpty()) {
+                    Text("Selected: $selectedItem",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = Color.White
+                    )
+                }
             }
-        }
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        // Display the selected menu item
-        if (selectedItem.isNotEmpty()) {
-            Text("Selected: $selectedItem", style = MaterialTheme.typography.bodyLarge)
         }
     }
 }
 
 @Composable
 fun MenuItem(item: String, onItemClick: (String) -> Unit) {
-    GreetingCard(titleText = "This is a card for the " + item + " button.",
+    StartingScreenCard(titleText = "This is a card for the $item button.",
         descriptionText = "Description text",
-        buttonText = item
+        buttonText = item,
+        onButtonClick = onItemClick
     )
 }
 

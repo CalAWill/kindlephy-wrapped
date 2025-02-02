@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 
 @Composable
-fun GreetingCard(titleText: String, descriptionText: String, buttonText: String) {
+fun StartingScreenCard(titleText: String, descriptionText: String, buttonText: String, onButtonClick: (String) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -54,7 +54,7 @@ fun GreetingCard(titleText: String, descriptionText: String, buttonText: String)
                 color = Color.Gray
             )
             Button(
-                onClick = { /* TODO: Handle button click */ },
+                onClick = { onButtonClick(buttonText) },
                 colors = ButtonDefaults.buttonColors(
                     contentColor = Color.White,
                     containerColor = Color.DarkGray
@@ -73,9 +73,10 @@ fun GreetingCard(titleText: String, descriptionText: String, buttonText: String)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    GreetingCard(
+    StartingScreenCard(
         "Sample Text",
         "This is a descriptive text",
-        "Button Text"
+        "Button Text",
+        onButtonClick = {  }
     )
 }
