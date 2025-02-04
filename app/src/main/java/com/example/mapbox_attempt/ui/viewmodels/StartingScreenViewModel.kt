@@ -21,6 +21,7 @@ class StartingScreenViewModel(libraryDataRepository: LibraryDataRepository) : Vi
     /* TODO: Need a function that fetches the library data as soon as the view model is ready. Needs
         to do this concurrently so not as to block the UI from running.
         Get my fuel app project from work laptop to reference when confused.
+        Need to implement koin!!!!!!!!!!!
      */
 
     fun getSelectedMenuItem() : String {
