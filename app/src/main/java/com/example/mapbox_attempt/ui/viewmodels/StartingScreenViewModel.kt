@@ -22,6 +22,8 @@ class StartingScreenViewModel(libraryDataRepository: LibraryDataRepository) : Vi
         to do this concurrently so not as to block the UI from running.
         Get my fuel app project from work laptop to reference when confused.
         Need to implement koin!!!!!!!!!!!
+
+        This is just a test change to see what the main branch will do.
      */
 
     fun getSelectedMenuItem() : String {
