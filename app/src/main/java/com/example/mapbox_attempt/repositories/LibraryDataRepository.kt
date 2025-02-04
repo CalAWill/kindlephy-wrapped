@@ -1,5 +1,5 @@
 package com.example.mapbox_attempt.repositories
 
 interface LibraryDataRepository {
-    fun getLibraryData(): LibraryData
+    fun getLibraryData(amazonUsername: String, amazonPassword: String): LibraryData
 }
